@@ -1,0 +1,22 @@
+{
+  "name": "tastebase",
+  "version": "1.0.0",
+  "description": "A recipe app made for the IDMX 297 Capstone course.",
+  "dependencies": {
+    "pug": "^3.0.2",
+    "sass": "^1.49.9"
+  },
+  "devDependencies": {
+    "@parcel/config-default": "^2.3.2",
+    "@parcel/transformer-image": "^2.3.2",
+    "@parcel/transformer-pug": "^2.3.2",
+    "@parcel/transformer-sass": "^2.3.2",
+    "parcel": "^2.3.2"
+  },
+  "scripts": {
+    "clear": "rm -rf dist && mkdir dist && rm -rf .parcel-cache",
+    "dev": "parcel src/*.pug",
+    "redev": "npm run clear && npm run dev",
+    "build": "parcel build src/*.pug"
+  }
+}
