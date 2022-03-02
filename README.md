@@ -35,3 +35,9 @@ There are three commands that you should use during project development
     ├───/core           Core elements (e.g., resets, colors, mixins, etc.)
     └───/pages          Page-specific elements (e.g., layouts, containers, etc.)
 ```
+
+## Plugins
+In order for the internet to translate the components from Pug to JSX and vice versa, the following plugins are needed:
+1. babel-plugin-transform-react-jsx
+2. babel-plugin-transform-react-pug
+Install with npm.
