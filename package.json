@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A recipe app made for the IDMX 297 Capstone course.",
   "dependencies": {
+    "babel-plugin-transform-react-pug": "^7.0.1",
     "pug": "^3.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
