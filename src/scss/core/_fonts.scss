@@ -1,0 +1,30 @@
+@mixin load($name, $file, $wght: normal, $slnt: normal) {
+    @font-face {
+        font-family: $name;
+        font-weight: $wght;
+        font-style: $slnt;
+        src: url("../fonts/" + $file + ".woff2");
+        font-display: swap;
+    }
+}
+
+@include load("Montserrat", "Montserrat-Bold", bold);
+@include load("Montserrat", "Montserrat-BoldItalic", bold, italic);
+@include load("Lato", "Lato-Regular");
+@include load("Lato", "Lato-Italic", normal, italic);
+@include load("Lato", "Lato-Bold", bold);
+@include load("Lato", "Lato-BoldItalic", bold, italic);
+
+@mixin header($size, $color: black, $wght: normal, $slnt: normal) {
+    font: $size "Montserrat", Arial, sans-serif;
+    color: $color;
+    font-weight: $wght;
+    font-style: $slnt;
+}
+
+@mixin body($size, $color: black, $wght: normal, $slnt: normal) {
+    font: $size "Lato", Arial, sans-serif;
+    color: $color;
+    font-weight: $wght;
+    font-style: $slnt;
+}
