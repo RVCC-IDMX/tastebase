@@ -3,7 +3,8 @@ html(lang="en")
     head
         - const home = true
         - const desc = "Discover tasty new recipes for free on TasteBase."
-        include ./includes/_head.pug
+        include ./includes/_head.pug 
+        script(type="module" src="./index.js" defer) 
     body.body
         h1.h1 It works!
         p.p Here's some extra sample text to make sure you #[b #[i know]] it's working.
@@ -12,3 +13,5 @@ html(lang="en")
         .flex
             for color in colors
                 div(class=color) #{color}
+        #root 
+            
