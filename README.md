@@ -36,13 +36,14 @@ There are three commands that you should use during project development
     └───/pages          Page-specific elements (e.g., layouts, containers, etc.)
 ```
 
-## Plugins
+## Plugins and Installations
+### React and React DOM
+This app utilizes the React library via the following installation:
+- ```npm install react react-dom```
 
 ### Pug - JSX
-In order for the internet to translate the components from Pug to JSX and vice versa, the following plugins are needed:
-1. babel-plugin-transform-react-jsx
-    ```npm install babel-plugin-transform-react-jsx```
-2. babel-plugin-transform-react-pug
-    ```npm install babel-plugin-transform-react-pug```
+In order to translate the components from Pug to JSX and vice versa, the following plugins are needed:
+- ```npm install babel-plugin-transform-react-jsx```
+- ```npm install babel-plugin-transform-react-pug```
 
 ## Resources
