@@ -35,3 +35,16 @@ There are three commands that you should use during project development
     ├───/core           Core elements (e.g., resets, colors, mixins, etc.)
     └───/pages          Page-specific elements (e.g., layouts, containers, etc.)
 ```
+
+## Plugins and Installations
+### React and React DOM
+This app utilizes the React library via the following installation:
+- ```npm install react react-dom```
+
+### Pug - JSX
+In order to transpile Pug templates to JSX and vice versa, the following plugins are needed:
+- ```npm install babel-plugin-transform-react-jsx```
+- ```npm install babel-plugin-transform-react-pug```
+
+## Resources
+[Pug - JSX Plugin](https://github.com/pugjs/babel-plugin-transform-react-pug)

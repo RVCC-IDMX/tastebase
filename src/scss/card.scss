@@ -1,0 +1,36 @@
+
+@use "./core/fonts" as font;
+
+
+.card_container{
+    background-color: tan;
+    margin: 1rem;
+    width: 25rem;
+    height: 25rem;
+    text-align: center;
+    box-shadow: 8px 5px 12px gray;
+    border-radius: 1rem;
+}
+
+.card_title{
+    border-bottom: 1px solid black;
+    margin: 1rem;
+    @include font.header(64px);
+}
+
+.card_body{
+    margin: 2rem;
+    @include font.body(24px);
+}
+
+.button{
+    background-color: darkolivegreen;
+    @include font.body(2rem);
+    color: white;
+    padding: .25rem;
+    width: 100%;
+}
+
+.button:hover{
+    background-color: olive;
+}

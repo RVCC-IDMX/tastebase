@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "A recipe app made for the IDMX 297 Capstone course.",
   "dependencies": {
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-plugin-transform-react-pug": "^7.0.1",
     "pug": "^3.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "sass": "^1.49.9"
   },
   "devDependencies": {
@@ -11,12 +15,23 @@
     "@parcel/transformer-image": "^2.3.2",
     "@parcel/transformer-pug": "^2.3.2",
     "@parcel/transformer-sass": "^2.3.2",
-    "parcel": "^2.3.2"
+    "assert": "^2.0.0",
+    "buffer": "^6.0.3",
+    "events": "^3.3.0",
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
+    "parcel": "^2.3.2",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
+    "querystring-es3": "^0.2.1",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.0"
   },
   "scripts": {
     "clear": "rm -rf dist && mkdir dist && rm -rf .parcel-cache",
     "dev": "parcel src/*.pug",
     "redev": "npm run clear && npm run dev",
-    "build": "parcel build src/*.pug"
+    "build": "parcel build src/*.pug",
+    "react-dev": "parcel src/index.js"
   }
 }
