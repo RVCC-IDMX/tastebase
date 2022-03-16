@@ -1,4 +1,6 @@
+@use "./core/reset";
 @use "./core/colors";
 @use "./core/fonts";
-@use "./core/reset";
+@use "./components/card";
+@use "./components/header";
 @use "./pages/home";

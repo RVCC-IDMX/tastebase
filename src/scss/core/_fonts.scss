@@ -1,3 +1,5 @@
+@use "./colors" as color;
+
 @mixin load($name, $file, $wght: normal, $slnt: normal) {
     @font-face {
         font-family: $name;
@@ -15,14 +17,14 @@
 @include load("Lato", "Lato-Bold", bold);
 @include load("Lato", "Lato-BoldItalic", bold, italic);
 
-@mixin header($size, $color: black, $wght: normal, $slnt: normal) {
+@mixin header($size, $color: color.$mono-dark, $wght: normal, $slnt: normal) {
     font: $size "Montserrat", Arial, sans-serif;
     color: $color;
     font-weight: $wght;
     font-style: $slnt;
 }
 
-@mixin body($size, $color: black, $wght: normal, $slnt: normal) {
+@mixin body($size, $color: color.$mono-dark, $wght: normal, $slnt: normal) {
     font: $size "Lato", Arial, sans-serif;
     color: $color;
     font-weight: $wght;

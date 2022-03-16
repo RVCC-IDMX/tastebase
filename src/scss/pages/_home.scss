@@ -1,8 +1,11 @@
 @use "../core/colors" as color;
 @use "../core/fonts" as font;
 
-.body {
-    margin: 48px;
+.main {
+    background-color: color.$mono-lite;
+    padding: 48px;
+    min-height: calc(100vh - 64px);
+    transition: filter ease-in-out 0.2s;
 }
 
 .h1 {
@@ -16,23 +19,4 @@
 .p {
     @include font.body(16px);
     margin-bottom: 32px;
-}
-
-.flex {
-    display: flex;
-    gap: 16px;
-}
-
-$colors: (
-    "main": color.$main,
-    "main-dark": color.$main-dark,
-    "accent": color.$accent,
-    "alt": color.$alt);
-@each $name, $hex in $colors {
-    .#{$name} {
-        height: 150px;
-        width: 150px;
-        background-color: $hex;
-        @include font.header(32px, color.$mono-lite);
-    }
 }

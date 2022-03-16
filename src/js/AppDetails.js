@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './scss/card.scss';
+import style from '../scss/main.scss';
 
 const AppDetails = () => pug`
     .card_container

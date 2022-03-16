@@ -1,0 +1,78 @@
+@use "../core/colors" as color;
+@use "../core/fonts" as font;
+
+.nav {
+    flex: 1;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    background-color: color.$main-dark;
+    padding: 12px;
+    height: 64px;
+    &__toggle {
+        fill: color.$mono-lite;
+        flex: 1;
+        svg {
+            cursor: pointer;
+            width: 48px;
+            padding: 8px;
+            transition: all ease-in-out 0.2s;
+        }
+    }
+    &__logo {
+        margin-top: 3px;
+        padding: 12px;
+        svg {
+            width: 128px;
+        }
+    }
+    &__blank {
+        flex: 1;
+    }
+}
+
+.links {
+    display: flex;
+    flex-flow: row nowrap;
+    list-style-type: none;
+    left: -150px;
+    transition: left ease-in-out 0.2s;
+    &__item {
+        @include font.body(16px, color.$mono-lite, bold);
+        display: none;
+    }
+}
+
+// js modifiers //
+
+.open {
+    background-color: color.$main-darker;
+    flex-flow: column nowrap;
+    list-style-type: none;
+    position: absolute;
+    top: 64px;
+    left: 0px;
+    padding-top: 16px;
+    z-index: 1;
+    min-height: calc(100vh - 64px);
+    li {
+        @include font.body(16px, color.$mono-lite, bold);
+        display: block;
+        a {
+            display: block;
+            padding: 16px 64px 16px 22px;
+        }
+    }
+}
+
+.enlarge {
+    svg {
+        width: 56px;
+        margin-left: -4px;
+    }
+}
+
+.darken {
+    filter: brightness(40%);
+}

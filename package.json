@@ -11,6 +11,7 @@
     "sass": "^1.49.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.7",
     "@parcel/config-default": "^2.3.2",
     "@parcel/transformer-image": "^2.3.2",
     "@parcel/transformer-pug": "^2.3.2",
