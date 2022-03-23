@@ -2,21 +2,20 @@
 @use "../core/fonts" as font;
 
 .main {
-    background-color: color.$mono-lite;
-    padding: 48px;
+    background-color: color.$alt-lite;
+    padding: 20px;
     min-height: calc(100vh - 64px - 73px);
     transition: filter ease-in-out 0.2s;
 }
 
 .h1 {
-    @include font.header(64px);
-}
-
-.h2 {
-    @include font.header(40px);
+    @include font.header(20px, color.$main-darker);
+    text-align: center;
+    text-transform: lowercase;
+    margin-bottom: 16px;
 }
 
 .p {
-    @include font.body(16px);
+    @include font.body(14px);
     margin-bottom: 32px;
 }

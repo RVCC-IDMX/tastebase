@@ -1,34 +1,51 @@
+@use "../core/colors" as color;
 @use "../core/fonts" as font;
 
-.card_container{
-    background-color: tan;
-    margin: 1rem;
-    width: 25rem;
-    height: 25rem;
-    text-align: center;
-    box-shadow: 8px 5px 12px gray;
-    border-radius: 1rem;
+#cards {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
 }
 
-.card_title{
-    border-bottom: 1px solid black;
-    margin: 1rem;
-    @include font.header(64px);
-}
-
-.card_body{
-    margin: 2rem;
-    @include font.body(24px);
-}
-
-.button{
-    background-color: darkolivegreen;
-    @include font.body(2rem);
-    color: white;
-    padding: .25rem;
-    width: 100%;
-}
-
-.button:hover{
-    background-color: olive;
+.card {
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: color.$mono-lite;
+    width: 150px;
+    box-shadow: 0 0 8px color.$mono;
+    border-radius: 12px;
+    &__display {
+        width: 150px;
+        height: 150px;
+    }
+    &__img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+        border-radius: 12px 12px 0 0;
+    }
+    &__info {
+        padding: 12px;
+    }
+    &__name {
+        @include font.header(18px);
+    }
+    &__stars {
+        @include font.body(12px);
+        display: inline-block;
+        margin-right: 8px;
+    }
+    &__num-rates {
+        @include font.body(10px, color.$mono, bold);
+    }
+    &__calories {
+        @include font.body(12px, color.$mono-dark, bold);
+        display: inline-block;
+        margin-right: 8px;
+    }
+    &__time {
+        @include font.body(10px, color.$mono-dark);
+    }
 }
