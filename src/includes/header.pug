@@ -1,14 +1,19 @@
-mixin link(title)
-    - const href = title === "Home" ? "./index.pug" : `./${title.toLowerCase()}.pug`;
-    li.links__item: a(href=href) #{title}
 header.nav
     .nav__toggle
         include ../img/icons/list.svg
     a.nav__logo(href="/")
         include ../img/logo/dark-mono.svg
     .nav__blank
-    ul.links
-        +link("Home")
-        +link("Discover")
-        +link("Saved")
-        +link("Upload")
+    .links
+        ul.links__list
+            +header-link("Home")
+                include ../img/icons/house.svg
+            +header-link("Discover")
+                include ../img/icons/search.svg
+            +header-link("Saved")
+                include ../img/icons/bookmark.svg
+            +header-link("Upload")
+                include ../img/icons/upload.svg
+        .links__build
+            p.links__version#version
+            p.links__copyright © #{new Date().getFullYear()} TasteBase

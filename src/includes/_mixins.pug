@@ -1,0 +1,15 @@
+mixin link(c, name)
+    - const href = name === "Home" ? "./index.pug" : `./${name.toLowerCase()}.pug`;
+    - const classes = name === (home ? "Home" : title) ? `${c}__item ${c}--current` : `${c}__item`;
+    li(class=`${classes}`)
+        a(href=href)
+            span #{name}
+            block
+
+mixin header-link(name)
+    +link("links", name)
+        block
+
+mixin footer-link(name)
+    +link("tabs", name)
+        block

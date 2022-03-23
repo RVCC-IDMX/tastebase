@@ -30,7 +30,8 @@
   },
   "scripts": {
     "clear": "rm -rf dist && mkdir dist && rm -rf .parcel-cache",
-    "dev": "parcel src/*.pug",
+    "gen": "bash ./scripts/generate.sh",
+    "dev": "npm run gen && parcel src/*.pug",
     "redev": "npm run clear && npm run dev",
     "build": "parcel build src/*.pug",
     "react-dev": "parcel src/index.js"

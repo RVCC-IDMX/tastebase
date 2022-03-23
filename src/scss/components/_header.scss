@@ -33,37 +33,51 @@
 }
 
 .links {
+    background-color: color.$main-darker;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
+    justify-content: space-between;
     list-style-type: none;
-    left: -150px;
+    position: absolute;
+    top: 64px;
+    left: -200px;
+    padding-top: 16px;
+    z-index: 1;
+    min-height: calc(100vh - 64px);
     transition: left ease-in-out 0.2s;
     &__item {
         @include font.body(16px, color.$mono-lite, bold);
-        display: none;
+        a {
+            display: flex;
+            flex-flow: row-reverse nowrap;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 16px 64px 16px 22px;
+            svg {
+                width: 40px;
+                fill: color.$mono;
+                padding-right: 16px;
+                margin-bottom: -3px;
+            }
+            transition: background-color ease-in-out 0.1s;
+            &:hover {
+                background-color: color.$main-dark;
+            }
+        }
+    }
+    &__build {
+        @include font.body(12px, color.$mono);
+        padding: 16px 64px 24px 22px;
+    }
+    &--current {
+        background-color: color.$main-dark;
     }
 }
 
 // js modifiers //
 
 .open {
-    background-color: color.$main-darker;
-    flex-flow: column nowrap;
-    list-style-type: none;
-    position: absolute;
-    top: 64px;
     left: 0px;
-    padding-top: 16px;
-    z-index: 1;
-    min-height: calc(100vh - 64px);
-    li {
-        @include font.body(16px, color.$mono-lite, bold);
-        display: block;
-        a {
-            display: block;
-            padding: 16px 64px 16px 22px;
-        }
-    }
 }
 
 .enlarge {

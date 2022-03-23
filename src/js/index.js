@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+const fs = require('fs');
 
 // Class checking functions
 const checkClass = c => document.getElementsByClassName(c).length > 0;
@@ -31,21 +32,26 @@ window.onload = () => {
         const links = findClass("links");
         const menu = findClass("nav__toggle");
         const main = findClass("main");
+        const footer = findClass("footer");
         toggleClasses(
             menu.contains(e.target) && !menu.classList.contains("enlarge"),
             !links.contains(e.target) && menu.classList.contains("enlarge"),
             [links, "open"],
             [menu, "enlarge"],
             [main, "darken"],
+            [footer, "darken"],
         )
     })
 }
 
-/*
+// Git data
+const tag = fs.readFileSync('src/_REV', 'utf8');
+document.getElementById("version").innerHTML = tag
+
+
 ReactDOM.render(
     <React.StrictMode>
         <App />
     </React.StrictMode>,
     document.getElementById('root')
 );
-*/

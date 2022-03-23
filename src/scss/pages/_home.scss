@@ -4,7 +4,7 @@
 .main {
     background-color: color.$mono-lite;
     padding: 48px;
-    min-height: calc(100vh - 64px);
+    min-height: calc(100vh - 64px - 73px);
     transition: filter ease-in-out 0.2s;
 }
 
