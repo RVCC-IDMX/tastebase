@@ -1,3 +1,4 @@
+import MagicGrid from "magic-grid"
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -44,10 +45,17 @@ window.onload = () => {
     })
 }
 
+// Create dynamic grid of cards
+let magicGrid = new MagicGrid({
+    container: "#cards",
+    items: 3,
+    gutter: 16,
+});
+magicGrid.listen();
+
 // Git data
 const tag = fs.readFileSync('src/_REV', 'utf8');
 document.getElementById("version").innerHTML = tag
-
 
 ReactDOM.render(
     <React.StrictMode>

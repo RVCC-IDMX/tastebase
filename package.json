@@ -5,6 +5,7 @@
   "dependencies": {
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-plugin-transform-react-pug": "^7.0.1",
+    "magic-grid": "^3.2.4",
     "pug": "^3.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

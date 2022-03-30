@@ -1,24 +1,17 @@
 @use "../core/colors" as color;
 @use "../core/fonts" as font;
 
-#cards {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 16px;
-}
-
 .card {
     display: flex;
     flex-flow: column nowrap;
     background-color: color.$mono-lite;
-    width: 150px;
+    $set-width: calc(50vw - 20px - 16px); // spacing, padding, gap/2
+    width: $set-width;
     box-shadow: 0 0 8px color.$mono;
     border-radius: 12px;
     &__display {
-        width: 150px;
-        height: 150px;
+        width: $set-width;
+        height: $set-width;
     }
     &__img {
         height: 100%;

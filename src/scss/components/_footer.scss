@@ -3,6 +3,9 @@
 
 .footer {
     transition: filter ease-in-out 0.2s;
+    position: fixed;
+    bottom: 0px;
+    width: 100vw;
 }
 
 .tabs {
