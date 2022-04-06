@@ -1,5 +1,15 @@
 import React from 'react';
 import style from '../scss/main.scss';
+import starNone from '../img/icons/star.svg'
+import starHalf from '../img/icons/star-half.svg'
+import starFill from '../img/icons/star-fill.svg'
+import allergenDairy from '../img/allergen/dairy.svg'
+import allergenEgg from '../img/allergen/egg.svg'
+import allergenGluten from '../img/allergen/gluten.svg'
+import allergenMollusk from '../img/allergen/mollusk.svg'
+import allergenPeanut from '../img/allergen/peanut.svg'
+import allergenShellfish from '../img/allergen/shellfish.svg'
+import allergenTreeNut from '../img/allergen/tree-nut.svg'
 
 // Generate random number [min to max]
 const rand = (min, max) => Math.random() * (max - min) + min;
@@ -24,20 +34,41 @@ const unitify = (n, unit) => {
     return numStr.replace(".0", '');
 }
 
+const allergenList = {
+    "Dairy": allergenDairy,
+    "Egg": allergenEgg,
+    "Gluten": allergenGluten,
+    "Mollusk": allergenMollusk,
+    "Peanut": allergenPeanut,
+    "Shellfish": allergenShellfish,
+    "Tree-Nut": allergenTreeNut,
+};
+
 const stars = () => rand(0, 10) / 2;
 const ratings = () => Math.round(rand(0, 1000000));
 const calories = () => rand(150, 2500);
 const timeFull = () => Math.round(rand(1, 240));
+const allergens = () => ["Dairy-Free", "Egg-Free", "Tree-Nut-Free", "Peanut-Free"];
 
-/*
 const displayStars = n => pug`
-    include ../img/icons/star${n > 0.5 ? "-fill" : (n > 0 ? "-half" : "")}.svg
-    include ../img/icons/star${n > 1.5 ? "-fill" : (n > 1 ? "-half" : "")}.svg
-    include ../img/icons/star${n > 2.5 ? "-fill" : (n > 2 ? "-half" : "")}.svg
-    include ../img/icons/star${n > 3.5 ? "-fill" : (n > 3 ? "-half" : "")}.svg
-    include ../img/icons/star${n > 4.5 ? "-fill" : (n > 4 ? "-half" : "")}.svg
+    img(src=${n > 0.5 ? starFill : (n > 0 ? starHalf : starNone)})
+    img(src=${n > 1.5 ? starFill : (n > 1 ? starHalf : starNone)})
+    img(src=${n > 2.5 ? starFill : (n > 2 ? starHalf : starNone)})
+    img(src=${n > 3.5 ? starFill : (n > 3 ? starHalf : starNone)})
+    img(src=${n > 4.5 ? starFill : (n > 4 ? starHalf : starNone)})
 `
-*/
+
+const displayAllergens = a => {
+    let output = [];
+    Object.entries(allergenList).forEach(entry => {
+        let [key, value] = entry;
+        let sourceKey = `${key}-Free`;
+        if (a.includes(sourceKey) === false) {
+            output.push(pug`img(src=${value})`);
+        }
+    });
+    return output;
+}
 
 // Stringify the number of ratings
 const displayRatings = n => unitify(n, "rating");
@@ -61,12 +92,15 @@ const displayTimeFull = n => {
 const makeCard = () => pug`
     .card
         .card__display
+            .card__liked
+                svg.card__heart(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16")
+                    path(fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z")
             img.card__img(src="https://source.unsplash.com/random/500x500?food")
-            .card__liked 
         .card__info
             h2.card__name To Be Randomized
+            .card__allergens ${displayAllergens(allergens())}
             .card__rating
-                span.card__stars !!!!!
+                span.card__stars ${displayStars(stars())}
                 span.card__num-rates ${displayRatings(ratings())}
             .card__detail
                 span.card__calories ${displayCalories(calories())}

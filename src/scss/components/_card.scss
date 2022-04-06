@@ -13,6 +13,32 @@
         width: $set-width;
         height: $set-width;
     }
+    &__liked {
+        width: 46px;
+        height: 46px;
+        background-color: color.$mono-lite;
+        position: absolute;
+        right: 6px;
+        top: 6px;
+        border-radius: 10px;
+        box-shadow: 0 0 4px color.$mono-dark
+    }
+    &__heart {
+        width: 30px;
+        fill: color.$mono-lite;
+        position: absolute;
+        right: 7.75px;
+        top: 10px;
+        filter: drop-shadow(0 0 2px color.$mono);
+        &--liked {
+            width: 32px;
+            fill: color.$accent;
+            position: absolute;
+            right: 7px;
+            top: 9px;
+            filter: none;           
+        }
+    }
     &__img {
         height: 100%;
         width: 100%;
@@ -22,16 +48,35 @@
     &__info {
         padding: 12px;
     }
+    &__allergens {
+        display: flex;
+        flex-flow: row nowrap;
+        position: absolute;
+        background-color: color.$mono-lite;
+        right: 0px;
+        padding: 2px;
+        top: 154px;
+        border-radius: 8px 0 0 0;
+        img {
+            width: 20px;
+            margin-right: px;
+        }        
+    }
     &__name {
         @include font.header(18px);
     }
     &__stars {
-        @include font.body(12px);
-        display: inline-block;
+        display: inline-flex;
+        flex-flow: row nowrap;
         margin-right: 8px;
+        img {
+            width: 9.5px;
+            margin-right: 2px;
+        }
     }
     &__num-rates {
         @include font.body(10px, color.$mono, bold);
+        margin-bottom: -2px;
     }
     &__calories {
         @include font.body(12px, color.$mono-dark, bold);
