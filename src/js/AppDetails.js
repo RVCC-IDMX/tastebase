@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react'
 import style from '../scss/main.scss';
 import starNone from '../img/icons/star.svg'
 import starHalf from '../img/icons/star-half.svg'
@@ -10,6 +10,16 @@ import allergenMollusk from '../img/allergen/mollusk.svg'
 import allergenPeanut from '../img/allergen/peanut.svg'
 import allergenShellfish from '../img/allergen/shellfish.svg'
 import allergenTreeNut from '../img/allergen/tree-nut.svg'
+
+// Function to request a response from a URL
+const req = async url => {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', url, false);
+    xhr.send(null);
+    if (xhr.status === 200) {
+        return xhr.responseText;
+    }
+};
 
 // Generate random number [min to max]
 const rand = (min, max) => Math.random() * (max - min) + min;
@@ -46,9 +56,6 @@ const allergenList = {
 
 const stars = () => rand(0, 10) / 2;
 const ratings = () => Math.round(rand(0, 1000000));
-const calories = () => rand(150, 2500);
-const timeFull = () => Math.round(rand(1, 240));
-const allergens = () => ["Dairy-Free", "Egg-Free", "Tree-Nut-Free", "Peanut-Free"];
 
 const displayStars = n => pug`
     img(src=${n > 0.5 ? starFill : (n > 0 ? starHalf : starNone)})
@@ -89,33 +96,61 @@ const displayTimeFull = n => {
     }    
 }
 
-const makeCard = () => pug`
+const makeCard = (img="", allergens=[], calories=0, time=0) => pug`
     .card
         .card__display
             .card__liked
                 svg.card__heart(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16")
                     path(fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z")
-            img.card__img(src="https://source.unsplash.com/random/500x500?food")
+            img.card__img(src=${img})
         .card__info
             h2.card__name To Be Randomized
-            .card__allergens ${displayAllergens(allergens())}
+            .card__allergens ${displayAllergens(allergens)}
             .card__rating
                 span.card__stars ${displayStars(stars())}
                 span.card__num-rates ${displayRatings(ratings())}
             .card__detail
-                span.card__calories ${displayCalories(calories())}
-                span.card__time ${displayTimeFull(timeFull())}
+                span.card__calories ${displayCalories(calories)}
+                span.card__time ${displayTimeFull(time)}
 `
 
-const AppDetails = () => pug`
-    ${makeCard()}
-    ${makeCard()}
-    ${makeCard()}
-    ${makeCard()}
-    ${makeCard()}
-    ${makeCard()}
-    ${makeCard()}
-    ${makeCard()}
-`
+const AppDetails = () => {
+    const [recipes, setRecipes] = useState([]);
+    const [query, setQuery] = useState("chicken");
+    useEffect(() => {
+        getRecipes(); // eslint-disable-next-line
+    }, [query]);
+
+    // Request search from Edamam
+    const getRecipes = async () => {
+        // Request, recieve, and parse data from API
+        const apiID = process.env.API_ID;
+        const apiKey = process.env.API_KEY;
+        let data = await req(`https://api.edamam.com/search?q=${query}&app_id=${apiID}&app_key=${apiKey}`);
+        data = JSON.parse(data);
+
+        // Add seleted recipes to output array
+        const recipeData = []
+        const range = await data.to - data.from;
+        for (let i = 0; i < range; i++) {
+            recipeData.push({
+                "img":          data.hits[i].recipe.image,
+                "allergens":    data.hits[i].recipe.healthLabels,
+                "calories":     data.hits[i].recipe.calories,
+                "time":         data.hits[i].recipe.totalTime,
+            });
+        }
+
+        // Return data
+        setRecipes(recipeData);
+        console.log(recipeData);
+    };
+
+    return pug`
+    ${recipes.forEach(recipe => {
+        makeCard(recipe.img, recipe.allergens, recipe.calories, recipe.time);
+    })}
+    `
+};
 
 export default AppDetails;
