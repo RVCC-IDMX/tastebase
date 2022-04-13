@@ -1,0 +1,8 @@
+@use "./core/reset";
+@use "./core/colors";
+@use "./core/fonts";
+@use "./components/card";
+@use "./components/footer";
+@use "./components/header";
+@use "./pages/home";
+/*# sourceMappingURL=main.css.map */
