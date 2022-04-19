@@ -49,3 +49,5 @@ In order to transpile Pug templates to JSX and vice versa, the following plugins
 ## Resources
 - [Pug - JSX Plugin](https://github.com/pugjs/babel-plugin-transform-react-pug)
 - [Bootstrap Icons](https://icons.getbootstrap.com/)
+
+test branch
