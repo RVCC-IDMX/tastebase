@@ -47,15 +47,15 @@
     }
     &__info {
         padding: 12px;
+        display: grid;
     }
     &__allergens {
         display: flex;
         flex-flow: row nowrap;
-        position: absolute;
         background-color: color.$mono-lite;
-        right: 0px;
+        grid-row: 1/2;
+        justify-self: right;
         padding: 2px;
-        top: 154px;
         border-radius: 8px 0 0 0;
         img {
             width: 20px;
