@@ -12,6 +12,7 @@ const App = () => {
         }
     };
     const [recipes, setRecipes] = useState([]);
+    const [search, setSearch] = useState("");
     const [query, setQuery] = useState("chicken");
     useEffect(() => {
         getRecipes(); // eslint-disable-next-line
@@ -42,8 +43,25 @@ const App = () => {
         setRecipes(recipeData);
     };
 
+    const updateSearch = e =>{
+        setSearch(e.target.value);
+    };
+
+    const getSearch = e => {
+        e.preventDefault();
+        setQuery(search);
+        setSearch("");
+    };
+
 return (
     <>
+    {<form className="search-form" onSubmit={getSearch} >
+		<input className="search-bar" type="text" value={search}
+			onChange={updateSearch} />
+		<button className="search-button" type="submit" >
+			Search
+		</button>
+	</form>}
     {recipes.map(recipe=>
         (<CardDetails
          img = {recipe.img}
