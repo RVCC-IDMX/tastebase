@@ -30,6 +30,22 @@
     &__blank {
         flex: 1;
     }
+    @media screen and (min-width: 1200px) {
+        height: 96px;
+        &__toggle {
+            svg {
+                width: 72px;
+                padding: 16px;
+            }
+        }
+        &__logo {
+            margin-top: 3px;
+            padding: 12px;
+            svg {
+                width: 212px;
+            }
+        }
+    }
 }
 
 .links {
@@ -45,19 +61,34 @@
     z-index: 1;
     min-height: calc(100vh - 64px);
     transition: left ease-in-out 0.2s;
+    @media screen and (min-width: 1200px) {
+        left: -300px;
+        top: 96px;
+        min-height: calc(100vh - 96px);
+    }
     &__item {
         @include font.body(16px, color.$mono-lite, bold);
+        @media screen and (min-width: 1200px) {
+            @include font.body(18px, color.$mono-lite, bold);
+        }
         a {
             display: flex;
             flex-flow: row-reverse nowrap;
             justify-content: flex-end;
             align-items: center;
             padding: 16px 64px 16px 22px;
+            @media screen and (min-width: 1200px) {
+                padding: 24px 128px 24px 22px;
+            }
             svg {
                 width: 40px;
                 fill: color.$mono;
                 padding-right: 16px;
                 margin-bottom: -3px;
+                @media screen and (min-width: 1200px) {
+                    width: 56px;
+                    padding-right: 20px;
+                }
             }
             transition: background-color ease-in-out 0.1s;
             &:hover {
@@ -84,6 +115,10 @@
     svg {
         width: 56px;
         margin-left: -4px;
+        @media screen and (min-width: 1200px) {
+            width: 88px;
+            margin-left: -8px;
+        }
     }
 }
 
