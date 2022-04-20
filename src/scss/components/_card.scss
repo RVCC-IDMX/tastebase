@@ -1,18 +1,38 @@
 @use "../core/colors" as color;
 @use "../core/fonts" as font;
 
+@mixin card-width($w) {
+    width: $w;
+    &__display {
+        width: $w;
+        height: $w;
+    }
+}
+
 .card {
     display: flex;
     flex-flow: column nowrap;
     background-color: color.$mono-lite;
-    $set-width: calc(50vw - 20px - 16px); // spacing, padding, gap/2
-    width: $set-width;
+    @media screen and (max-width: 374px) {
+        @include card-width(calc(100vw - 20px - 16px)); // spacing, padding, gap/2
+    }
+    @media screen and (min-width: 375px) {
+        @include card-width(calc(50vw - 20px - 16px));
+    }
+    @media screen and (min-width: 600px) {
+        @include card-width(calc(33vw - 20px - 16px));
+    }
+    @media screen and (min-width: 900px) {
+        @include card-width(calc(25vw - 20px - 16px));
+    }
+    @media screen and (min-width: 1200px) {
+        @include card-width(calc(20vw - 20px - 16px));
+    }
+    @media screen and (min-width: 1500px) {
+        @include card-width(calc(15vw - 20px - 16px));
+    }
     box-shadow: 0 0 8px color.$mono;
     border-radius: 12px;
-    &__display {
-        width: $set-width;
-        height: $set-width;
-    }
     &__liked {
         width: 46px;
         height: 46px;

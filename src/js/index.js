@@ -5,9 +5,7 @@ import App from './App';
 const fs = require('fs');
 
 // Class checking functions
-const checkClass = c => document.getElementsByClassName(c).length > 0;
 const findClass = (c, n=0) => document.getElementsByClassName(c)[n];
-const setClass = (c, str, n=0) => document.getElementsByClassName(c)[n].innerHTML = str;
 
 // Toggle a list of element-class pairs based on conditionals
 const toggleClasses = (addCondition, removeCondition, ...pairs) => {
@@ -48,7 +46,7 @@ window.onload = () => {
 // Create dynamic grid of cards
 let magicGrid = new MagicGrid({
     container: "#cards",
-    items: 3,
+    items: 1,
     gutter: 16,
 });
 magicGrid.listen();
