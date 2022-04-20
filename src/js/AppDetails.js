@@ -10,6 +10,8 @@ import allergenMollusk from '../img/allergen/mollusk.svg'
 import allergenPeanut from '../img/allergen/peanut.svg'
 import allergenShellfish from '../img/allergen/shellfish.svg'
 import allergenTreeNut from '../img/allergen/tree-nut.svg'
+import {Favoriting} from '../js/FavoriteList'
+import {AiFillHeart} from 'react-icons/ai';
 
 // Function to request a response from a URL
 const req = async url => {
@@ -96,27 +98,125 @@ const displayTimeFull = n => {
     }    
 }
 
-const makeCard = (img="", allergens=[], calories=0, time=0, title="") => pug`
-    .card
-        .card__display
-            .card__liked
-                svg.card__heart(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16")
-                    path(fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z")
-            img.card__img(src=${img})
-        .card__info
-            h2.card__name ${title}
-            .card__allergens ${displayAllergens(allergens)}
-            .card__rating
-                span.card__stars ${displayStars(stars())}
-                span.card__num-rates ${displayRatings(ratings())}
-            .card__detail
-                span.card__calories ${displayCalories(calories)}
-                span.card__time ${displayTimeFull(time)}
-`
+//Begin favorite button functions
+//On click, check the state of the heart
 
-const AppDetails = ({img, allergens, calories, time, title}) => {
+
+//For trash icon
+// var timesClicked = 0;
+
+// function deleteFav(){
+//     timesClicked++;
+
+//     //On even number of clicks, return state of recipe card
+//     //On odd number of clicks, grey out recipe card, then remove after n msec
+//     if (timesClicked%2===0){
+//         document.querySelector(`[data-uri="${uri}"]`).style.opacity = 1;
+//         document.querySelector(`[data-uri="${uri}"]`).style.visibility = 'visible';
+//         return
+//     } else {
+//         document.querySelector(`[data-uri="${uri}"]`).style.opacity = .5;
+//         setTimeout(()=> {
+//         if (timesClicked%2===0){
+//             return
+//         } else {
+//             document.querySelector(`[data-uri="${uri}"]`).style.visibility = 'hidden'; 
+//             buttonClick();
+//         }	
+//     },5000)
+//     }
+// }
+
+
+//End favorite button functions
+
+
+
+const makeCard = (img="", allergens=[], calories=0, time=0, title="", uri, favorites=[]) => {
+    const recObj = {
+        img,
+        allergens,
+        calories,
+        time,
+        title,
+        uri,
+    }
+
+    console.log("makeCard::",uri,favorites);
+
+    //On click, check the state of the heart
+    function checkHeart(favorites) {
+        if (favorites[uri]) return "red";
+        return "gray";
+    }
+
+    function buttonClick(event){
+
+        console.log("buttonClick::",uri);
+
+        //console.dir(event);
+            
+        //Working Code : DO NOT DELETE
+    
+        //Make sure URI is saved for each heart icon
+        //Find element that has unique URI and click is true
+        //const uri = event.target.parentElement.attributes["data"].value;
+        const el = document.querySelector(`[data="${uri}"]`);
+        console.log(el)
+        
+        /*
+            For testing logs only
+            console.log(el);
+            console.log(favorites[uri]);
+            const el = document.querySelector(uri);
+        */
+    
+        console.log("Fav:",favorites);
+    
+        //If uri is property of favorites and value is true, then toggle red to grey and make value false
+        //Else toggle grey to red and make value true
+        if (favorites[uri]){
+            el.style.fill = 'grey';
+            favorites[uri] = undefined;
+            delete(favorites[uri]);
+        }
+        else {
+            el.style.fill = 'red';
+            favorites[uri] = recObj;
+        }
+    
+        //Set favoritesArray in localstorage
+        localStorage.setItem('favoritesArray', JSON.stringify(favorites));
+    }
+
+    return (pug`
+        .card
+            .card__display
+                .card__liked
+                    AiFillHeart(id="heart_button", color=${checkHeart(favorites)}, onClick=${(event)=>buttonClick(event)}, data=${uri})
+                img.card__img(src=${img})
+            .card__info
+                h2.card__name ${title}
+                .card__allergens ${displayAllergens(allergens)}
+                .card__rating
+                    span.card__stars ${displayStars(stars())}
+                    span.card__num-rates ${displayRatings(ratings())}
+                .card__detail
+                    span.card__calories ${displayCalories(calories)}
+                    span.card__time ${displayTimeFull(time)}
+    `);
+
+}
+
+
+const AppDetails = ({img, allergens, calories, time, title, uri, favorites}) => {
+    
+
+    //console.log(uri)
+    console.log("Appdetails",favorites)
+    //console.log(document.getElementsByClassName('card_liked'));
     return pug `
-        ${makeCard(img, allergens, calories, time, title)}
+        ${makeCard(img, allergens, calories, time, title, uri, favorites)}
     `
 };
 
