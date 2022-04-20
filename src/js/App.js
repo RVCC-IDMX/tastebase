@@ -36,6 +36,7 @@ const App = () => {
                 "calories":     data.hits[i].recipe.calories,
                 "time":         data.hits[i].recipe.totalTime,
                 "title":        data.hits[i].recipe.label,
+                "uri":          data.hits[i].recipe.uri,
             });
         }
 
@@ -53,6 +54,12 @@ const App = () => {
         setSearch("");
     };
 
+    var favorites = JSON.parse(localStorage.getItem('favoritesArray'));
+    if (favorites == null) favorites = {};
+
+    
+
+
 return (
     <>
     {<form className="search-form" onSubmit={getSearch} >
@@ -62,6 +69,7 @@ return (
 			Search
 		</button>
 	</form>}
+
     {recipes.map(recipe=>
         (<CardDetails
          img = {recipe.img}
@@ -69,6 +77,8 @@ return (
          calories = {recipe.calories}
          time = {recipe.time}
          title = {recipe.title}
+         uri = {recipe.uri}
+         favorites = {favorites}
          >
          
          
