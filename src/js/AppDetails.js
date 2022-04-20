@@ -96,7 +96,7 @@ const displayTimeFull = n => {
     }    
 }
 
-const makeCard = (img="", allergens=[], calories=0, time=0) => pug`
+const makeCard = (img="", allergens=[], calories=0, time=0, title="") => pug`
     .card
         .card__display
             .card__liked
@@ -104,7 +104,7 @@ const makeCard = (img="", allergens=[], calories=0, time=0) => pug`
                     path(fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z")
             img.card__img(src=${img})
         .card__info
-            h2.card__name To Be Randomized
+            h2.card__name ${title}
             .card__allergens ${displayAllergens(allergens)}
             .card__rating
                 span.card__stars ${displayStars(stars())}
@@ -114,42 +114,9 @@ const makeCard = (img="", allergens=[], calories=0, time=0) => pug`
                 span.card__time ${displayTimeFull(time)}
 `
 
-const AppDetails = () => {
-    const [recipes, setRecipes] = useState([]);
-    const [query, setQuery] = useState("chicken");
-    useEffect(() => {
-        getRecipes(); // eslint-disable-next-line
-    }, [query]);
-
-    // Request search from Edamam
-    const getRecipes = async () => {
-        // Request, recieve, and parse data from API
-        const apiID = process.env.API_ID;
-        const apiKey = process.env.API_KEY;
-        let data = await req(`https://api.edamam.com/search?q=${query}&app_id=${apiID}&app_key=${apiKey}`);
-        data = JSON.parse(data);
-
-        // Add seleted recipes to output array
-        const recipeData = []
-        const range = await data.to - data.from;
-        for (let i = 0; i < range; i++) {
-            recipeData.push({
-                "img":          data.hits[i].recipe.image,
-                "allergens":    data.hits[i].recipe.healthLabels,
-                "calories":     data.hits[i].recipe.calories,
-                "time":         data.hits[i].recipe.totalTime,
-            });
-        }
-
-        // Return data
-        setRecipes(recipeData);
-        console.log(recipeData);
-    };
-
-    return pug`
-    ${recipes.forEach(recipe => {
-        makeCard(recipe.img, recipe.allergens, recipe.calories, recipe.time);
-    })}
+const AppDetails = ({img, allergens, calories, time, title}) => {
+    return pug `
+        ${makeCard(img, allergens, calories, time, title)}
     `
 };
 
