@@ -8,4 +8,26 @@ html(lang="en")
         main.main
             h1.h1 Saved
             p.p Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic inventore doloremque quis consectetur numquam. Doloremque, reprehenderit iste! Ullam quasi cumque iure perferendis veniam totam, ducimus ea asperiores facilis error reiciendis!
+            #favoriteCards
+                script.
+                    let favorites = JSON.parse(localStorage.getItem("favoritesArray"));
+                    let favs = Object.values(favorites);
+                    {favs.map(recipe => (
+                        <CardDetails
+                            img = {recipe.img}
+                            allergens = {recipe.allergens}
+                            calories = {recipe.calories}
+                            time = {recipe.time}
+                            title = {recipe.title}
+                            uri = {recipe.uri}
+                            favorites = {favorites}
+                        
+                    />
+                    
+                    )
+                    )}
+                    
+                    
+                    //const newEl = document.createTextNode(favs);
+                    //document.getElementById("favoriteCards").appendChild(newEl)
         include ./includes/footer.pug

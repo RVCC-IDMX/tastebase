@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import style from '../scss/main.scss';
+import '../scss/styling.css';
 import starNone from '../img/icons/star.svg'
 import starHalf from '../img/icons/star-half.svg'
 import starFill from '../img/icons/star-fill.svg'
@@ -10,8 +11,8 @@ import allergenMollusk from '../img/allergen/mollusk.svg'
 import allergenPeanut from '../img/allergen/peanut.svg'
 import allergenShellfish from '../img/allergen/shellfish.svg'
 import allergenTreeNut from '../img/allergen/tree-nut.svg'
-import {Favoriting} from '../js/FavoriteList'
 import {AiFillHeart} from 'react-icons/ai';
+
 
 // Function to request a response from a URL
 const req = async url => {
@@ -142,8 +143,6 @@ const makeCard = (img="", allergens=[], calories=0, time=0, title="", uri, favor
         uri,
     }
 
-    console.log("makeCard::",uri,favorites);
-
     //On click, check the state of the heart
     function checkHeart(favorites) {
         if (favorites[uri]) return "red";
@@ -152,26 +151,13 @@ const makeCard = (img="", allergens=[], calories=0, time=0, title="", uri, favor
 
     function buttonClick(event){
 
-        console.log("buttonClick::",uri);
-
-        //console.dir(event);
-            
         //Working Code : DO NOT DELETE
     
         //Make sure URI is saved for each heart icon
         //Find element that has unique URI and click is true
-        //const uri = event.target.parentElement.attributes["data"].value;
         const el = document.querySelector(`[data="${uri}"]`);
-        console.log(el)
         
-        /*
-            For testing logs only
-            console.log(el);
-            console.log(favorites[uri]);
-            const el = document.querySelector(uri);
-        */
-    
-        console.log("Fav:",favorites);
+        //el.style.width = '2.85em';
     
         //If uri is property of favorites and value is true, then toggle red to grey and make value false
         //Else toggle grey to red and make value true
@@ -193,7 +179,7 @@ const makeCard = (img="", allergens=[], calories=0, time=0, title="", uri, favor
         .card
             .card__display
                 .card__liked
-                    AiFillHeart(id="heart_button", color=${checkHeart(favorites)}, onClick=${(event)=>buttonClick(event)}, data=${uri})
+                    AiFillHeart(id="heart_button", height="3em", width="2.85em", color=${checkHeart(favorites)}, onClick=${(event)=>buttonClick(event)}, data=${uri})
                 img.card__img(src=${img})
             .card__info
                 h2.card__name ${title}
@@ -208,12 +194,11 @@ const makeCard = (img="", allergens=[], calories=0, time=0, title="", uri, favor
 
 }
 
-
 const AppDetails = ({img, allergens, calories, time, title, uri, favorites}) => {
     
 
     //console.log(uri)
-    console.log("Appdetails",favorites)
+    //console.log("Appdetails",favorites)
     //console.log(document.getElementsByClassName('card_liked'));
     return pug `
         ${makeCard(img, allergens, calories, time, title, uri, favorites)}
