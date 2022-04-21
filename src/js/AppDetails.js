@@ -13,7 +13,6 @@ import allergenShellfish from '../img/allergen/shellfish.svg'
 import allergenTreeNut from '../img/allergen/tree-nut.svg'
 import {AiFillHeart} from 'react-icons/ai';
 
-
 // Function to request a response from a URL
 const req = async url => {
     let xhr = new XMLHttpRequest();
@@ -99,10 +98,6 @@ const displayTimeFull = n => {
     }    
 }
 
-//Begin favorite button functions
-//On click, check the state of the heart
-
-
 //For trash icon
 // var timesClicked = 0;
 
@@ -127,11 +122,6 @@ const displayTimeFull = n => {
 //     },5000)
 //     }
 // }
-
-
-//End favorite button functions
-
-
 
 const makeCard = (img="", allergens=[], calories=0, time=0, title="", uri, favorites=[]) => {
 
