@@ -134,6 +134,11 @@ const displayTimeFull = n => {
 
 
 const makeCard = (img="", allergens=[], calories=0, time=0, title="", uri, favorites=[]) => {
+
+    //Create a unique id
+    const key = Math.floor(Math.random() * 10000)
+
+    //Create object for localStorage
     const recObj = {
         img,
         allergens,
@@ -149,6 +154,7 @@ const makeCard = (img="", allergens=[], calories=0, time=0, title="", uri, favor
         return "gray";
     }
 
+    //On click, handle favorites
     function buttonClick(event){
 
         //Working Code : DO NOT DELETE
@@ -156,8 +162,6 @@ const makeCard = (img="", allergens=[], calories=0, time=0, title="", uri, favor
         //Make sure URI is saved for each heart icon
         //Find element that has unique URI and click is true
         const el = document.querySelector(`[data="${uri}"]`);
-        
-        //el.style.width = '2.85em';
     
         //If uri is property of favorites and value is true, then toggle red to grey and make value false
         //Else toggle grey to red and make value true
@@ -179,7 +183,7 @@ const makeCard = (img="", allergens=[], calories=0, time=0, title="", uri, favor
         .card
             .card__display
                 .card__liked
-                    AiFillHeart(id="heart_button", height="3em", width="2.85em", color=${checkHeart(favorites)}, onClick=${(event)=>buttonClick(event)}, data=${uri})
+                    AiFillHeart(id="heart_button", color=${checkHeart(favorites)}, onClick=${(event)=>buttonClick(event)}, data=${uri})
                 img.card__img(src=${img})
             .card__info
                 h2.card__name ${title}
@@ -195,11 +199,6 @@ const makeCard = (img="", allergens=[], calories=0, time=0, title="", uri, favor
 }
 
 const AppDetails = ({img, allergens, calories, time, title, uri, favorites}) => {
-    
-
-    //console.log(uri)
-    //console.log("Appdetails",favorites)
-    //console.log(document.getElementsByClassName('card_liked'));
     return pug `
         ${makeCard(img, allergens, calories, time, title, uri, favorites)}
     `

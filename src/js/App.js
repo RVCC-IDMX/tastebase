@@ -72,6 +72,7 @@ return (
 
     {recipes.map(recipe=>
         (<CardDetails
+        key = {Math.floor(Math.random() * 10000)}
          img = {recipe.img}
          allergens = {recipe.allergens}
          calories = {recipe.calories}
