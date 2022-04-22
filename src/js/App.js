@@ -57,12 +57,9 @@ const App = () => {
     var favorites = JSON.parse(localStorage.getItem('favoritesArray'));
     if (favorites == null) favorites = {};
 
-    
-
-
 return (
     <>
-    {<form className="search-form" onSubmit={getSearch} >
+    {<form className="search-form" onSubmit={getSearch}>
 		<input className="search-bar" type="text" value={search}
 			onChange={updateSearch} />
 		<button className="search-button" type="submit" >

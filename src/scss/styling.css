@@ -4,6 +4,12 @@ svg#heart_button {
     cursor: pointer;
 }
 
+.search-form{
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
 .search-bar{
     width: 50%;
     border:none;

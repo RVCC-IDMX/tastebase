@@ -49,7 +49,7 @@ window.onload = () => {
 let magicGrid = new MagicGrid({
     container: "#cards",
     items: 3,
-    gutter: 16,
+    gutter: 8,
 });
 magicGrid.listen();
 
