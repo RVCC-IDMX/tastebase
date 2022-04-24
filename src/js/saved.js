@@ -30,4 +30,6 @@ const Favorites = (recipe) => {
     )
 }
 
+
 export default Favorites;
+
