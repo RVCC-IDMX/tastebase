@@ -48,8 +48,8 @@ window.onload = () => {
 // Create dynamic grid of cards
 let magicGrid = new MagicGrid({
     container: "#cards",
-    items: 3,
-    gutter: 8,
+    items: 10,
+    gutter: 45,
 });
 magicGrid.listen();
 

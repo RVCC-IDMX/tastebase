@@ -8,5 +8,66 @@ html(lang="en")
         main.main
             h1.h1 Saved
             p.p Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic inventore doloremque quis consectetur numquam. Doloremque, reprehenderit iste! Ullam quasi cumque iure perferendis veniam totam, ducimus ea asperiores facilis error reiciendis!
-            #favoriteCards
+            #favoriteCards  
+            template#temp
+                .card
+                    .card__display
+                        img.card__img
+                    .card__info
+                        h2.card__name
+                        .card__detail
+                            span.card__calories
+                            span.card__time
+        script.
+            let favorites = JSON.parse(localStorage.getItem("favoritesArray"));
+            let favs = Object.values(favorites);
+            console.log(favs)
+            const cards = document.getElementById('favoriteCards');
+            const temp = document.getElementById('temp');
+            favs.forEach(fav=>{
+
+                //functions
+                // Stringify a number and attach a unit to it
+                const unitify = (n, unit) => {
+                    const magnitude = Math.floor(Math.log(n) / Math.LN10 + 1e-9);
+                    const mantissa = n / Math.pow(10, magnitude - magnitude % 3);
+                    const roundTo = (magnitude % 3 === 0) && (magnitude !== 0) ? 1 : 0;
+                    let numStr = mantissa.toFixed(roundTo);
+                    if (n >= 1e6) {
+                        numStr = `${numStr}m ${unit}s`
+                    } else if (n >= 1e3) {
+                        numStr = `${numStr}k ${unit}s`
+                    } else if (n > 1) {
+                        numStr = `${numStr} ${unit}s`
+                    } else if (n === 1) {
+                        numStr = `1 ${unit}`
+                    } else {
+                        numStr = `No ${unit}s`
+                    }
+                    return numStr.replace(".0", '');
+                }
+
+                // Stringify the number of calories
+                const displayCalories = n => unitify(n, "calorie");
+
+                const clone = temp.content.cloneNode(true);
+                //console.log(clone);
+                
+                
+                
+                const img = clone.querySelector('.card__img');
+                img.src = fav.img;
+
+                const title = clone.querySelector('.card__name');
+                title.innerHTML = fav.title;
+
+                const calories = clone.querySelector('.card__calories');
+                calories.innerHTML = displayCalories(fav.calories)
+
+                const time = clone.querySelector('.card__time');
+                time.innerHTML = fav.time + ' ' + 'min.';
+
+                cards.appendChild(clone);
+            })
+            
         include ./includes/footer.pug

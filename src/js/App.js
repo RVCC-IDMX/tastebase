@@ -56,7 +56,7 @@ const App = () => {
 
     var favorites = JSON.parse(localStorage.getItem('favoritesArray'));
     if (favorites == null) favorites = {};
-
+    //console.log(home);
 return (
     <>
     {<form className="search-form" onSubmit={getSearch}>
@@ -67,9 +67,10 @@ return (
 		</button>
 	</form>}
 
+
     {recipes.map(recipe=>
         (<CardDetails
-        key = {Math.floor(Math.random() * 10000)}
+        key = {Math.floor(Math.random() * 100000)}
          img = {recipe.img}
          allergens = {recipe.allergens}
          calories = {recipe.calories}
