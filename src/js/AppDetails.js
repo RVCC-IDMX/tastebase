@@ -186,6 +186,7 @@ const makeCard = (img="", allergens=[], calories=0, time=0, title="", uri, fullU
                     span.card__calories ${displayCalories(calories)}
                     span.card__time ${displayTimeFull(time)}
                     span.card__url
+                        a(href=${fullUrl} target='_blank' class='full__recipe') Visit
     `);
 
 }
