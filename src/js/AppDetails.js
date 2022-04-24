@@ -123,7 +123,7 @@ const displayTimeFull = n => {
 //     }
 // }
 
-const makeCard = (img="", allergens=[], calories=0, time=0, title="", uri, favorites=[]) => {
+const makeCard = (img="", allergens=[], calories=0, time=0, title="", uri, fullUrl, favorites=[]) => {
 
     //Create a unique id
     const key = Math.floor(Math.random() * 10000)
@@ -136,6 +136,7 @@ const makeCard = (img="", allergens=[], calories=0, time=0, title="", uri, favor
         time,
         title,
         uri,
+        fullUrl
     }
 
     //On click, check the state of the heart
@@ -184,13 +185,14 @@ const makeCard = (img="", allergens=[], calories=0, time=0, title="", uri, favor
                 .card__detail
                     span.card__calories ${displayCalories(calories)}
                     span.card__time ${displayTimeFull(time)}
+                    span.card__url
     `);
 
 }
 
-const AppDetails = ({img, allergens, calories, time, title, uri, favorites}) => {
+const AppDetails = ({img, allergens, calories, time, title, uri, fullUrl, favorites}) => {
     return pug `
-        ${makeCard(img, allergens, calories, time, title, uri, favorites)}
+        ${makeCard(img, allergens, calories, time, title, uri, fullUrl, favorites)}
     `
 };
 

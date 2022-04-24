@@ -37,6 +37,7 @@ const App = () => {
                 "time":         data.hits[i].recipe.totalTime,
                 "title":        data.hits[i].recipe.label,
                 "uri":          data.hits[i].recipe.uri,
+                "fullUrl":      data.hits[i].recipe.url,
             });
         }
 
@@ -77,6 +78,7 @@ return (
          time = {recipe.time}
          title = {recipe.title}
          uri = {recipe.uri}
+         fullUrl = {recipe.fullUrl}
          favorites = {favorites}
          >
          
