@@ -19,6 +19,7 @@ html(lang="en")
                             span.card__calories
                             span.card__time
                             span.card__url
+                                a(target='_blank').full__recipe Visit
         script.
             let favorites = JSON.parse(localStorage.getItem("favoritesArray"));
             let favs = Object.values(favorites);
@@ -67,6 +68,9 @@ html(lang="en")
 
                 const time = clone.querySelector('.card__time');
                 time.innerHTML = fav.time + ' ' + 'min.';
+
+                const fullUrl = clone.querySelector('.full__recipe');
+                fullUrl.href = fav.fullUrl;
 
                 cards.appendChild(clone);
             })
