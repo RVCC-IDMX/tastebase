@@ -1,14 +1,13 @@
 import Note from './Note';
 import AddNote from './AddNote';
 import React from 'react';
-//import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 //Pass notes, handleAddNote, and handleDeleteNote through variable NotesList
 const NotesList = ({ notes, handleAddNote, handleDeleteNote }) => {
 
-	var rand = Math.floor(Math.random() * 100000);
 	return (
-		<div className='notes-list' key={rand}>
+		<div className='notes-list' key={uuidv4()}>
 			{notes.map((note) => (
 				<Note
 					id={note.id}
@@ -16,7 +15,7 @@ const NotesList = ({ notes, handleAddNote, handleDeleteNote }) => {
 					body={note.body}
 					date={note.date}
 					handleDeleteNote={handleDeleteNote}
-					key={rand}
+					key={uuidv4()}
 				/>
 			))}
 			<AddNote handleAddNote={handleAddNote} />

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CardDetails from './AppDetails';
 import style from '../scss/main.scss';
+import {v4 as uudiv4} from 'uuid';
 
 const App = () => {
     const req = async url => {
@@ -57,7 +58,7 @@ const App = () => {
 
     var favorites = JSON.parse(localStorage.getItem('favoritesArray'));
     if (favorites == null) favorites = {};
-    //console.log(home);
+
 return (
     <>
     {<form className="search-form" onSubmit={getSearch}>
@@ -71,7 +72,7 @@ return (
 
     {recipes.map(recipe=>
         (<CardDetails
-        key = {Math.floor(Math.random() * 100000)}
+         key = {uudiv4()}
          img = {recipe.img}
          allergens = {recipe.allergens}
          calories = {recipe.calories}
@@ -81,9 +82,6 @@ return (
          fullUrl = {recipe.fullUrl}
          favorites = {favorites}
          >
-         
-         
-
         </CardDetails>))}
     </>
 )

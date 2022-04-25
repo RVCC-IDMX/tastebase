@@ -12,6 +12,7 @@ import allergenPeanut from '../img/allergen/peanut.svg'
 import allergenShellfish from '../img/allergen/shellfish.svg'
 import allergenTreeNut from '../img/allergen/tree-nut.svg'
 import {AiFillHeart} from 'react-icons/ai';
+import {v4 as uuidv4} from 'uuid';
 
 // Function to request a response from a URL
 const req = async url => {
@@ -98,30 +99,7 @@ const displayTimeFull = n => {
     }    
 }
 
-//For trash icon
-// var timesClicked = 0;
 
-// function deleteFav(){
-//     timesClicked++;
-
-//     //On even number of clicks, return state of recipe card
-//     //On odd number of clicks, grey out recipe card, then remove after n msec
-//     if (timesClicked%2===0){
-//         document.querySelector(`[data-uri="${uri}"]`).style.opacity = 1;
-//         document.querySelector(`[data-uri="${uri}"]`).style.visibility = 'visible';
-//         return
-//     } else {
-//         document.querySelector(`[data-uri="${uri}"]`).style.opacity = .5;
-//         setTimeout(()=> {
-//         if (timesClicked%2===0){
-//             return
-//         } else {
-//             document.querySelector(`[data-uri="${uri}"]`).style.visibility = 'hidden'; 
-//             buttonClick();
-//         }	
-//     },5000)
-//     }
-// }
 
 const makeCard = (img="", allergens=[], calories=0, time=0, title="", uri, fullUrl, favorites=[]) => {
 
