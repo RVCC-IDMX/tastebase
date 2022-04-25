@@ -8,39 +8,5 @@ html(lang="en")
         main.main
             h1.h1 Upload
             p.p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam corporis, unde minima perferendis, id deleniti blanditiis aspernatur voluptatibus libero ratione molestiae, voluptatem sit laboriosam tempore dignissimos facilis sed maiores consequuntur.
-            input#file-input(type='file' multiple='')
-            #preview    
-        script.
-            function previewImages() {
-
-            var preview = document.querySelector('#preview');
-
-            if (this.files) {
-            [].forEach.call(this.files, readAndPreview);
-            }
-
-            function readAndPreview(file) {
-
-            // Make sure `file.name` matches our extensions criteria
-            if (!/.(jpe?g|png|gif)$/i.test(file.name)) {
-                return alert(file.name + " is not an image");
-            } // else...
-            
-            var reader = new FileReader();
-            
-            reader.addEventListener("load", function() {
-                var image = new Image();
-                image.height = 300;
-                image.src    = this.result;
-                image.className = 'uploaded__image'
-                preview.appendChild(image);
-            });
-            
-            reader.readAsDataURL(file);
-            
-            }
-
-            }
-
-            document.querySelector('#file-input').addEventListener("change", previewImages);
+            #uploadBody
         include ./includes/footer.pug

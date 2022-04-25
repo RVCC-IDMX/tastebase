@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+.form-container {
+    background-color: gray;
+    width: 25rem;
+    padding: 2rem;
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-group {
+    margin: 1rem;
+}
+
+.form-label {
+    margin-right: 1rem;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+    text-align: center;
+	border-bottom: 1px solid black;
+	
+}
+.header__head-text {
+    text-align: center;
+    border-bottom: none;
+}
+
+.container {
+	max-width: 960px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-right: 15px;
+	padding-left: 15px;
+	min-height: 100vh;
+}
+
+.note {
+    border-radius: none;
+	box-shadow: -15px -15px 15px rgba(225,225,225,.2), 15px 15px 15px rgba(0,0,0,.1);
+	margin: 20px;
+    padding: 1rem;
+	display: flex;
+	flex-direction: column;
+    justify-content: space-between;
+    white-space: pre-wrap;
+	background: white;
+	align-items: center;
+	min-width: 50%;
+	font-family: 'Lato';
+	position: relative;
+}
+
+.note-content {
+    background-color: white;
+    font-family: 'Lato';
+    text-align: center;
+    height: 6rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.note__main-text {
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.note__main-title {
+	font-size: 1.5rem;
+}
+
+.notes-list {
+	display: grid;
+	grid-gap: 1rem;
+	grid-template-columns: repeat(
+		auto-fill,
+		minmax(250px, 1fr)
+	);
+}
+
+.note.new {
+	background-color: lightgray;
+    font-family: 'Lato';
+}
+
+textarea {
+	border: none;
+	resize: none;
+	background-color: lightgray;
+    font-family: 'Lato';
+}
+
+textarea:focus {
+	outline: none;
+}
+
+.save {
+	background-color: #e1e1e1;
+	border: none;
+	border-radius: 15px;
+	padding: 5px 10px 5px 10px;
+    margin-left: .5rem;
+}
+
+.save-mode {
+    background-color: white;
+	border: none;
+	border-radius: 15px;
+	padding: 5px 10px 5px 10px;
+    margin-left: .5rem;
+}
+
+.save:hover {
+	background-color: #ededed;
+	cursor: pointer;
+}
+
+.note-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.delete-icon {
+	cursor: pointer;
+    margin-left: 1rem;
+}
+
+.search {
+	display: flex;
+	align-items: center;
+	background-color: rgb(233, 233, 233);
+	margin: 1.5em;
+  	border:none;
+  	padding: 10px;
+  	border-radius: 2rem;
+  	box-shadow: -15px -15px 15px rgba(225,225,225,.2), 15px 15px 15px rgba(0,0,0,.1);
+}
+
+.search input {
+	border: none;
+	background-color: rgb(233, 233, 233);
+	width: 100%;
+}
+
+.search input:focus {
+	outline: none;
+}
