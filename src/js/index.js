@@ -2,6 +2,7 @@ import MagicGrid from "magic-grid"
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import Favorites from './saved';
 const fs = require('fs');
 
 // Class checking functions

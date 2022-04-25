@@ -6,7 +6,6 @@ const Favorites = (recipe) => {
     
     let favorites = JSON.parse(localStorage.getItem("favoritesArray"));
     let favs = Object.values(favorites);
-    //console.log(favs);
     
     return (
     <>
