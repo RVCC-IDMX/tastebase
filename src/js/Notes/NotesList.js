@@ -16,7 +16,7 @@ const NotesList = ({ notes, handleAddNote, handleDeleteNote }) => {
 					body={note.body}
 					date={note.date}
 					handleDeleteNote={handleDeleteNote}
-					//key={uuidv4()}
+					key={rand}
 				/>
 			))}
 			<AddNote handleAddNote={handleAddNote} />
