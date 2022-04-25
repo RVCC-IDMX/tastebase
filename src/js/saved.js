@@ -1,34 +1,26 @@
+import { Nav } from './nav';
+import { Git } from './git';
 import React from 'react';
+import ReactDOM from 'react-dom';
+import MagicGrid from "magic-grid"
 //import {v4 as uuidv4} from 'uuid';
-import CardDetails from './AppDetails';
+import Favorites from './SavedDetails';
 
-const Favorites = (recipe) => {
-    
-    let favorites = JSON.parse(localStorage.getItem("favoritesArray"));
-    let favs = Object.values(favorites);
-    
-    return (
-    <>
-        
-        
-		{favs.map(recipe => (
-		<CardDetails
-        img = {recipe.img}
-        allergens = {recipe.allergens}
-        calories = {recipe.calories}
-        time = {recipe.time}
-        title = {recipe.title}
-        uri = {recipe.uri}
-        favorites = {favorites}
-			
-		/>
-        
-		))}
-	
-    </>
-    )
-}
+// Import navigation + Git data
+Nav();
+Git();
 
+// Create dynamic grid of cards
+let magicGrid = new MagicGrid({
+  container: "#favoriteCards",
+  items: 10,
+  gutter: 45,
+});
+magicGrid.listen();
 
-export default Favorites;
-
+ReactDOM.render(
+  <React.StrictMode>
+      <Favorites />
+  </React.StrictMode>,
+  document.getElementById('favoriteCards')
+);
