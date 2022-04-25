@@ -12,6 +12,7 @@ const Favorites = (recipe) => {
         
 		{favs.map(recipe => (
 		<CardDetails
+        key = {Math.floor(Math.random() * 100000)}
         img = {recipe.img}
         allergens = {recipe.allergens}
         calories = {recipe.calories}
