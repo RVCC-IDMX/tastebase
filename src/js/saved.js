@@ -10,13 +10,6 @@ import Favorites from './SavedDetails';
 Nav();
 Git();
 
-// Create dynamic grid of cards
-let magicGrid = new MagicGrid({
-  container: "#favoriteCards",
-  items: 10,
-  gutter: 45,
-});
-magicGrid.listen();
 
 ReactDOM.render(
   <React.StrictMode>
@@ -24,3 +17,12 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('favoriteCards')
 );
+
+
+// Create dynamic grid of cards
+let magicGrid = new MagicGrid({
+  container: "#favoriteCards",
+  items: 1,
+  gutter: 16,
+});
+magicGrid.listen();

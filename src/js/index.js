@@ -9,17 +9,17 @@ import App from './App';
 Nav();
 Git();
 
-// Create dynamic grid of cards
-let magicGrid = new MagicGrid({
-    container: "#cards",
-    items: 1,
-    gutter: 16,
-});
-magicGrid.listen();
-
 ReactDOM.render(
     <React.StrictMode>
         <App />
     </React.StrictMode>,
     document.getElementById('cards')
 );
+
+// Create dynamic grid of cards
+let magicGrid = new MagicGrid({
+    container: "#cardset",
+    items: 1,
+    gutter: 16,
+});
+magicGrid.listen();

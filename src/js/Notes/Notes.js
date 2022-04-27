@@ -3,7 +3,7 @@ import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import NotesList from './NotesList';
 import Search from './Search';
-import Header from './Header';
+import './form-data.css';
 
 const NotesApp = () => {
 	//Default notes/recipes
@@ -82,7 +82,6 @@ const NotesApp = () => {
 	return (
 		<div>
 			<div className='container'>
-				<Header />
 				<Search handleSearchNote={setSearchText} />
 				<NotesList
 					notes={notes.filter((note) =>

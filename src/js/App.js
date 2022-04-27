@@ -69,20 +69,21 @@ return (
 		</button>
 	</form>}
 
-
-    {recipes.map(recipe=>
-        (<CardDetails
-         key = {uudiv4()}
-         img = {recipe.img}
-         allergens = {recipe.allergens}
-         calories = {recipe.calories}
-         time = {recipe.time}
-         title = {recipe.title}
-         uri = {recipe.uri}
-         fullUrl = {recipe.fullUrl}
-         favorites = {favorites}
-         >
+    {<div id="cardset">
+        {recipes.map(recipe=>
+            (<CardDetails
+            key = {uudiv4()}
+            img = {recipe.img}
+            allergens = {recipe.allergens}
+            calories = {recipe.calories}
+            time = {recipe.time}
+            title = {recipe.title}
+            uri = {recipe.uri}
+            fullUrl = {recipe.fullUrl}
+            favorites = {favorites}
+            >
         </CardDetails>))}
+    </div>}
     </>
 )
 }
