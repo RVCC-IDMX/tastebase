@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react'
 import style from '../scss/main.scss';
+import '../scss/styling.css';
 import starNone from '../img/icons/star.svg'
 import starHalf from '../img/icons/star-half.svg'
 import starFill from '../img/icons/star-fill.svg'
@@ -10,6 +11,18 @@ import allergenMollusk from '../img/allergen/mollusk.svg'
 import allergenPeanut from '../img/allergen/peanut.svg'
 import allergenShellfish from '../img/allergen/shellfish.svg'
 import allergenTreeNut from '../img/allergen/tree-nut.svg'
+import {AiFillHeart} from 'react-icons/ai';
+import {v4 as uuidv4} from 'uuid';
+
+// Function to request a response from a URL
+const req = async url => {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', url, false);
+    xhr.send(null);
+    if (xhr.status === 200) {
+        return xhr.responseText;
+    }
+};
 
 // Generate random number [min to max]
 const rand = (min, max) => Math.random() * (max - min) + min;
@@ -46,9 +59,6 @@ const allergenList = {
 
 const stars = () => rand(0, 10) / 2;
 const ratings = () => Math.round(rand(0, 1000000));
-const calories = () => rand(150, 2500);
-const timeFull = () => Math.round(rand(1, 240));
-const allergens = () => ["Dairy-Free", "Egg-Free", "Tree-Nut-Free", "Peanut-Free"];
 
 const displayStars = n => pug`
     img(src=${n > 0.5 ? starFill : (n > 0 ? starHalf : starNone)})
@@ -89,33 +99,80 @@ const displayTimeFull = n => {
     }    
 }
 
-const makeCard = () => pug`
-    .card
-        .card__display
-            .card__liked
-                svg.card__heart(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16")
-                    path(fillRule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z")
-            img.card__img(src="https://source.unsplash.com/random/500x500?food")
-        .card__info
-            h2.card__name To Be Randomized
-            .card__allergens ${displayAllergens(allergens())}
-            .card__rating
-                span.card__stars ${displayStars(stars())}
-                span.card__num-rates ${displayRatings(ratings())}
-            .card__detail
-                span.card__calories ${displayCalories(calories())}
-                span.card__time ${displayTimeFull(timeFull())}
-`
 
-const AppDetails = () => pug`
-    ${makeCard()}
-    ${makeCard()}
-    ${makeCard()}
-    ${makeCard()}
-    ${makeCard()}
-    ${makeCard()}
-    ${makeCard()}
-    ${makeCard()}
-`
+
+const makeCard = (img="", allergens=[], calories=0, time=0, title="", uri, fullUrl, favorites=[]) => {
+
+    //Create a unique id
+    const key = Math.floor(Math.random() * 10000)
+
+    //Create object for localStorage
+    const recObj = {
+        img,
+        allergens,
+        calories,
+        time,
+        title,
+        uri,
+        fullUrl
+    }
+
+    //On click, check the state of the heart
+    function checkHeart(favorites) {
+        if (favorites[uri]) return "red";
+        return "gray";
+    }
+
+    //On click, handle favorites
+    function buttonClick(event){
+
+        //Working Code : DO NOT DELETE
+    
+        //Make sure URI is saved for each heart icon
+        //Find element that has unique URI and click is true
+        const el = document.querySelector(`[data="${uri}"]`);
+    
+        //If uri is property of favorites and value is true, then toggle red to grey and make value false
+        //Else toggle grey to red and make value true
+        if (favorites[uri]){
+            el.style.fill = 'grey';
+            favorites[uri] = undefined;
+            delete(favorites[uri]);
+        }
+        else {
+            el.style.fill = 'red';
+            favorites[uri] = recObj;
+        }
+    
+        //Set favoritesArray in localstorage
+        localStorage.setItem('favoritesArray', JSON.stringify(favorites));
+    }
+
+    return (pug`
+        .card
+            .card__display
+                .card__liked
+                    AiFillHeart(id="heart_button", color=${checkHeart(favorites)}, onClick=${(event)=>buttonClick(event)}, data=${uri})
+                img.card__img(src=${img})
+            .card__info
+                h2.card__name ${title}
+                .card__allergens ${displayAllergens(allergens)}
+                .card__rating
+                    span.card__stars ${displayStars(stars())}
+                    span.card__num-rates ${displayRatings(ratings())}
+                .card__detail
+                    span.card__calories ${displayCalories(calories)}
+                    span.card__time ${displayTimeFull(time)}
+                    span.card__url
+                        a(href=${fullUrl} target='_blank' class='full__recipe') Visit
+    `);
+
+}
+
+const AppDetails = ({img, allergens, calories, time, title, uri, fullUrl, favorites}) => {
+    return pug `
+        ${makeCard(img, allergens, calories, time, title, uri, fullUrl, favorites)}
+    `
+};
 
 export default AppDetails;
