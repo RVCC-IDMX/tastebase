@@ -1,0 +1,68 @@
+svg#heart_button {
+    width: 2.85em;
+    height: 3em;
+    cursor: pointer;
+}
+
+.search-form{
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+.search-bar{
+    width: 50%;
+    border:none;
+    padding: 10px;
+    border-radius: 2rem;
+    box-shadow: -15px -15px 15px rgba(225,225,225,.2), 15px 15px 15px rgba(0,0,0,.1);
+    }
+    .search-button{
+    background: #454d25;
+    border: 2px solid white;
+    border-radius: 2rem;
+    padding: 10px 20px;
+    color: white;
+    font-size: larger;
+    margin: 0 0 0 10px;
+    }
+    .search-button:hover {
+    background-color: darkolivegreen ;
+    }
+
+    #favoriteCards {
+            display:grid;
+            align-items: start;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 1rem;
+            grid-template-rows: masonry;
+    }
+      
+      .thumbnail {
+        height: 100px;
+        margin: 10px;
+      }
+
+      #file-input {
+        background: #454d25;
+        border: 2px solid white;
+        border-radius: 2rem;
+        padding: 10px 20px;
+        color: white;
+        font-size: larger;
+        margin: 0 0 0 10px;
+      }
+      #preview {
+        padding: 1rem;
+        display:grid;
+        align-items: start;
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+        gap: 1rem;
+        grid-template-rows: masonry;
+      }
+
+      .full__recipe {
+          padding: .5rem;
+          font-size: 10px;
+          font-family: Arial;
+      }

@@ -18,6 +18,7 @@ meta(name="og:type" content="website")
 //- meta(name="twitter:image", content="./img/main-twit.png")
 link(rel="icon" href="./img/favicon.svg" type="image/svg+xml")
 link(rel="stylesheet", href="./scss/main.scss")
-script(type="module" src="./js/index.js" defer)
+- const js = home ? "index" : title.toLowerCase()
+script(type="module" src=`./js/${js}.js` defer)
 //- Mixins ////////////////////////////////////////////////////////////////////
 include ./_mixins.pug
