@@ -1,0 +1,18 @@
+doctype html
+html(lang="en")
+    head
+        - const title = "About"
+        include ./includes/_head.pug
+    body.body
+        include ./includes/header.pug
+        main.main
+            .smallmargin
+                h1.h1 About Us
+                img.about-img(src="./img/food1.jpg?as=webp")
+                h2.h2.center We began with a simple question:
+                h3.h3 How do we get more people to cook their own meals? 🤔
+                p.p #[span.h2 E]veryone knows nothing beats a home-cooked meal, but cooking takes time and ordering takeout is, arguably, more convenient. However, with the rising cost of delivery, more and more people are struggling to find a balance between delicious food and maintaining a budget. 
+                h2.h2.center TasteBase was created to give people that balance. ⚖️
+                img.about-img2(src="./img/food2.jpg?as=webp")
+                p.p #[span.h2 A]t #[b TasteBase] we provide people easy access to healthy and affordable recipes that anyone can make. We believe cooking is a skill everybody can learn and, with our simple recipes, master. We aim to encourage people to lead healthier, wealthier lives while proving you don’t have to compromise on good taste to do so.
+        include ./includes/footer.pug
