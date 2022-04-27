@@ -12,8 +12,8 @@ Git();
 // Create dynamic grid of cards
 let magicGrid = new MagicGrid({
     container: "#cards",
-    items: 10,
-    gutter: 45,
+    items: 1,
+    gutter: 16,
 });
 magicGrid.listen();
 

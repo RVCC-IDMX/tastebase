@@ -7,6 +7,10 @@
     min-height: calc(100vh - 64px - 73px);
     transition: filter ease-in-out 0.2s;
     margin-bottom: 73px;
+    @media screen and (min-width: 1366px) {
+        min-height: calc(100vh - 64px);
+        margin-bottom: 0px;
+    }
 }
 
 .h1 {
@@ -14,6 +18,10 @@
     text-align: center;
     text-transform: lowercase;
     margin-bottom: 16px;
+    @media screen and (min-width: 768px) {
+        @include font.header(28px, color.$main-darker);
+        margin-bottom: 24px;
+    }
 }
 
 .p {
