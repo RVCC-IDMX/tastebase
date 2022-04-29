@@ -17,9 +17,9 @@ ReactDOM.render(
 );
 
 // Create dynamic grid of cards
-let magicGrid = new MagicGrid({
-    container: "#cardset",
-    items: 1,
-    gutter: 16,
-});
-magicGrid.listen();
+// let magicGrid = new MagicGrid({
+//     container: "#cardset",
+//     items: 1,
+//     gutter: 16,
+// });
+// magicGrid.listen();
