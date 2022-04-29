@@ -52,7 +52,7 @@ const AddNote = ({ handleAddNote }) => {
 					{characterLimit - noteBody.length} Remaining
 				</small>
 				
-				<GiSaveArrow className='saveIcon' onClick={handleSaveClick} style = {{paddingLeft: '1rem', backgroundColor: 'black'}} />
+				<GiSaveArrow className='saveIcon' onClick={handleSaveClick} style = {{marginLeft: '1rem', backgroundColor: 'black', borderRadius: '4px', cursor: 'pointer'}} />
 			</div>
 		</div>
 	);

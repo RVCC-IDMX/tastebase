@@ -43,7 +43,7 @@
 }
 
 .note {
-    border-radius: none;
+    border-radius: 5px;
 	box-shadow: -15px -15px 15px rgba(225,225,225,.2), 15px 15px 15px rgba(0,0,0,.1);
 	margin: 20px;
     padding: 1rem;
