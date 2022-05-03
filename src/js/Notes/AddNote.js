@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import React from 'react';
-//import SaveIcon from '@mui/icons-material/Save';
-import {GiSaveArrow} from 'react-icons/gi';
 
 const AddNote = ({ handleAddNote }) => {
 
@@ -52,7 +50,9 @@ const AddNote = ({ handleAddNote }) => {
 					{characterLimit - noteBody.length} Remaining
 				</small>
 				
-				<GiSaveArrow className='saveIcon' onClick={handleSaveClick} style = {{marginLeft: '1rem', backgroundColor: 'black', borderRadius: '4px', cursor: 'pointer'}} />
+				<button className='saveIcon' onClick={handleSaveClick}>
+					<p className='saveIcon-text'>save</p>
+				</button>
 			</div>
 		</div>
 	);
