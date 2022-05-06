@@ -19,6 +19,7 @@ const Favorites = (recipe) => {
         time = {recipe.time}
         title = {recipe.title}
         uri = {recipe.uri}
+        fullUrl = {recipe.fullUrl}
         favorites = {favorites}
 			
 		/>
